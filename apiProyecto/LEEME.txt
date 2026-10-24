@@ -1,0 +1,59 @@
+RETO DIARIO — PROYECTO WEB INSTALABLE (PWA)
+===========================================
+
+REQUISITOS
+- Java 17 o superior
+- Maven 3.9 o superior
+- MongoDB Atlas o una instancia local de MongoDB
+
+CONFIGURAR MONGODB DE FORMA SEGURA
+1. Abre la carpeta apiProyecto en VS Code.
+2. Configura la variable de entorno SPRING_DATA_MONGODB_URI con tu cadena nueva de MongoDB.
+3. Opcionalmente define SPRING_DATA_MONGODB_DATABASE=apiproyecto.
+4. No guardes contraseñas ni cadenas de conexión en archivos versionados.
+5. Si utilizaste las credenciales que estaban en el ZIP original, cámbialas en MongoDB Atlas antes de continuar.
+
+EJECUTAR
+- En la terminal, dentro de la carpeta que contiene pom.xml:
+  mvn spring-boot:run
+- Abre http://localhost:8080 en Chrome.
+- Para instalarla en Android, despliega la aplicación en un servidor HTTPS y abre la URL con Chrome > menú > Instalar aplicación.
+
+IMPORTANTE PARA TELÉFONO FÍSICO
+La dirección localhost de un teléfono apunta al propio teléfono, no al PC. Para probar desde un dispositivo físico, publica la aplicación con HTTPS o configura una dirección de servidor accesible desde la misma red. No publiques la base de datos ni expongas credenciales.
+
+ENDPOINTS PRINCIPALES
+- POST /api/users/register
+- POST /api/users/login
+- GET  /api/users/{id}
+- POST /api/users/{id}/completar/{retoId}
+- GET  /api/retos
+- GET  /api/retos?categoria=Logica
+- GET  /api/users/ranking
+
+NOTA DE SEGURIDAD
+Este proyecto es una base de desarrollo, no una plataforma lista para producción. Antes de publicarlo para usuarios reales, implementar autenticación/autorización completa para las rutas privadas, limitar CORS, agregar límites de intentos y pruebas de seguridad.
+
+
+DISEÑO EPICO v4
+- Interfaz renovada para bienvenida, inicio, juegos, progreso y navegación.
+- Conserva Java 17, Spring Boot, MongoDB y los archivos PWA.
+- No incluye contraseñas de MongoDB. Configura application-local.properties localmente.
+
+DISEÑO v5 — CAMALEÓN
+- Nueva interfaz móvil: bienvenida con camaleón, elección de categorías, inicio con nivel/racha/insignias,
+  retos jugables (físicos, mentales, creativos, aprendizaje), estadísticas, insignias, racha y configuración.
+- Solo se cambió la capa visual (index.html, íconos, manifest y sw.js). La API Java no se modificó.
+- Si ya tenías la app instalada, ciérrala y ábrela dos veces para que se actualice la caché.
+
+DISEÑO v6
+- Todos los emojis se reemplazaron por iconos SVG.
+- Nueva sección "Acertijos y lógica": Acertijos, Lógica, Secuencias, Memoria y Anagramas.
+- Nuevo Calendario: marca los días con actividad, muestra el detalle de cada día y permite planear retos (se guardan en el dispositivo).
+
+DISEÑO v7
+- Camaleón vivo: cambia de color según la categoría que más practicas en la semana y gana accesorios por nivel (gafas, corona, capa). Pantalla "Mi camaleón".
+- Check-in de energía diario (baja/normal/alta): el "Reto de hoy" y el tiempo del reto físico se adaptan.
+- Misiones del mundo real con checklist y foto opcional (la foto no se guarda).
+- Calendario de colores por categoría, vista de año tipo mosaico y frase del día.
+- Todo lo nuevo se guarda en el dispositivo (localStorage); la API Java no cambió.
